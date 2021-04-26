@@ -13,4 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.bg-gray {
+  background-color: black;
+}
+
+.alert:not(:last-child) {
+  margin-bottom: 0;
+}
+
 @import "bootstrap";

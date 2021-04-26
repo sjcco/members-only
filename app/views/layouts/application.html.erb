@@ -11,17 +11,46 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body>
+<body class="bg-gray">
   <% if flash[:notice] %>
-  <div class="notification is-primary global-notification">
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
     <p class="notice"><%= notice %></p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   <% end %>
   <% if flash[:alert] %>
-  <div class="notification is-danger global-notification">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <p class="alert"><%= alert %></p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   <% end %>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">
+        <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        MembersOnly
+      </a>
+      <form class="d-flex col-7">
+        <input class="form-control bg-light" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+        <datalist id="datalistOptions">
+          <%= tag.option value: "sup" %>
+          <option value="San Francisco">
+          <option value="New York">
+          <option value="Seattle">
+          <option value="Los Angeles">
+          <option value="Chicago">
+        </datalist>
+      </form>
+      <div>
+        <button type="button" class="btn btn-secondary rounded-pill mx-2 ">Sign up</button>
+        <button type="button" class="btn btn-outline-secondary rounded-pill mx-2">log in</button>
+      </div>
+
+
+    </div>
+  </nav>
   <%= yield %>
 </body>
 

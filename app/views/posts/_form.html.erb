@@ -1,22 +1,19 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= simple_form_for(@post) do |f| %>
+<%= f.error_notification %>
+<%= f.input :title,
+             label: "Title",
+             input_html: { class: "string my-2"},
+             wrapper: false,
+             label_html: { class: "label text-white" },
+             placeholder: "Enter post title..." %>
+<%= f.input :body,
+             label: "Post",
+             input_html: { class: "textarea my-2"},
+             wrapper: false,
+             label_html: { class: "label text-white" },
+             placeholder: "Compose a new post..." %>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= f.button :submit, class: "btn btn-secondary rounded-pill mx-2 " %>
 <% end %>
