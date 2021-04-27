@@ -1,5 +1,6 @@
 <section class="section col-8">
 
+  <% if member_signed_in? %>
   <div class="card rounded shadow-sm border-1 border-light bg-dark mb-2">
     <div class="card-body p-4">
       <div class="container">
@@ -7,15 +8,18 @@
       </div>
     </div>
   </div>
+  <% end %>
 
   <% @posts.each do |post| %>
 
   <div class="card rounded shadow-sm border-1 border-light bg-dark mb-2">
     <div class="card-body p-4">
       <div class="container">
-        <h5> <a href="#" class="text-light">Awesome product</a></h5>
-        <p class="small text-muted font-italic"> <%= post.body %>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <p class="smaller text-muted font-italic">Author</p>
+        <h5> <a href="#" class="text-light"><%= post.title %></a></h5>
+        <p class="small text-muted font-italic"> <%= post.body %></p>
+        <% if member_signed_in? %>
+        <p class="smaller text-muted font-italic"><%= post.member.username %></p>
+        <% end %>
       </div>
     </div>
   </div>

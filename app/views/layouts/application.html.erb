@@ -27,25 +27,26 @@
 
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
+      <%= link_to "Members Only", root_path, class: "d-inline-block align-text-top text-light h3 text-decoration-none" %>
 
-      <a class="navbar-brand" href="#">
-        <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        MembersOnly
-      </a>
-      <form class="d-flex col-7">
-        <input class="form-control bg-light" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-        <datalist id="datalistOptions">
-          <%= tag.option value: "sup" %>
-          <option value="San Francisco">
-          <option value="New York">
-          <option value="Seattle">
-          <option value="Los Angeles">
-          <option value="Chicago">
-        </datalist>
-      </form>
+
       <div>
-        <button type="button" class="btn btn-secondary rounded-pill mx-2 ">Sign up</button>
+
+        <% if member_signed_in? %>
+        <%= link_to  edit_member_registration_path do %>
+        <button type="button" class="btn btn-secondary rounded-pill mx-2 "><strong><%= current_member.username %></strong></button>
+        <% end %>
+        <%= link_to  destroy_member_session_path, method: :delete do %>
+        <button type="button" class="btn btn-outline-secondary rounded-pill mx-2">log Out</button>
+        <% end %>
+        <% else %>
+        <%= link_to  new_member_session_path do %>
         <button type="button" class="btn btn-outline-secondary rounded-pill mx-2">log in</button>
+        <% end %>
+        <%= link_to  new_member_registration_path, class: "button is-primary" do %>
+        <button type="button" class="btn btn-secondary rounded-pill mx-2 ">Sign up</button>
+        <% end %>
+        <% end %>
       </div>
 
 

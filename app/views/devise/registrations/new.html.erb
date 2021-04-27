@@ -1,25 +1,59 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign In</h5>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
+          <div class="form-label-group mb-3">
+            <%= f.input :username,  
+                label: "Username",              
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
+                wrapper: false,
+                input_html: { autocomplete: "Username",  id: "inputUsername", placeholder: "John-117" },
+                label_html: { for: "inputUsername"}
+                %>
+          </div>
+
+          <div class="form-label-group mb-3">
+            <%= f.input :email,  
+                label: "Email address",              
+                required: true,
+                wrapper: false,
+                input_html: { autocomplete: "email",  id: "inputEmail", placeholder: "Email address" },
+                label_html: { for: "inputEmail"}
+                %>
+          </div>
+
+          <div class="form-label-group">
+            <%= f.input :password,
+                label: "Password",
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+                input_html: { autocomplete: "new-password", id: "inputPassword", placeholder: "Password" },
+                label_html: { for: "inputPassword" } %>
+          </div>
+
+          <div class="form-label-group">
+            <%= f.input :password_confirmation,
+                label: "Password Confirmation",
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+                input_html: { autocomplete: "new-password", id: "inputPasswordConfirmation" },
+                label_html: { for: "inputPasswordConfirmation" } %>
+          </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+          <div class="form-actions col-5 mx-auto">
+            <%= f.button :submit, "Sign up", class: "btn btn-lg btn-secondary btn-block rounded-pill text-uppercase" %>
+          </div>
 
-<%= render "devise/shared/links" %>
+          <hr class="my-4">
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
