@@ -1,0 +1,19 @@
+<%= simple_form_for(@post) do |f| %>
+<%= f.error_notification %>
+<%= f.input :title,
+             label: "Title",
+             input_html: { class: "string my-2"},
+             wrapper: false,
+             label_html: { class: "label text-white" },
+             placeholder: "Enter post title..." %>
+<%= f.input :body,
+             label: "Post",
+             input_html: { class: "textarea my-2"},
+             wrapper: false,
+             label_html: { class: "label text-white" },
+             placeholder: "Compose a new post..." %>
+
+
+
+<%= f.button :submit,  class: "btn btn-secondary rounded-pill mx-2 " %>
+<% end %>
